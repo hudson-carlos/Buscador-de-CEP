@@ -3,11 +3,11 @@ const myInint = {
   headers: {"Accept": "application/json"}
 };
 
-export default async function api() {
-  const result = fetch("http://cep.la/", myInint)
+export default async function apiCep(cep) {
+  const result = fetch(`http://cep.la/${cep}`, myInint)
     .then(res => res.json())
     .then(res => res)
-    .catch(error => console.log(error))
+    .catch(error => alert(error.mesange));
   
   return result;
 }
