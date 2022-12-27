@@ -1,28 +1,18 @@
-import {useContext} from "react";
-import { MyContext } from "./provider"
+import { 
+  BrowserRouter as Router, 
+  Routes, 
+  Route, 
+} from "react-router-dom";
+import Home from "./Home";
+import Results from "./Results";
 
-function App() {
-  const { cep, setCep } = useContext(MyContext);
-   
+export default function App() {
   return (
-    <main>
-      <h1>Busca CEP</h1>
-      <form onChange={() => console.log(cep)}>
-        <label>Digite um CEP ou um Endereço:
-          <input 
-            type="text" 
-            name="search"
-            value={cep} 
-            placeholder="Não utilize nº de casa /apto/lote/prédio ou abreviação"
-            onChange={(e) => setCep(e.target.value)} 
-          />
-        </label>
-        <button type="button">
-          Buscar
-        </button>
-      </form>
-    </main>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/results" element={<Results />}/>
+      </Routes>
+    </Router>
   );
 }
-
-export default App;
