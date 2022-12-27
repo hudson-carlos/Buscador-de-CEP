@@ -8,7 +8,7 @@ function Home() {
   return (
     <main>
       <h1>Busca CEP</h1>
-      <form onChange={() => console.log(cep)}>
+      <form>
         <label>Digite um CEP ou um Endereço:
           <input 
             type="text" 
