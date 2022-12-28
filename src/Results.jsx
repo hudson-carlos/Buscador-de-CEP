@@ -9,8 +9,8 @@ export default function Results() {
   
   async function searchCEP() {
     const ceps = await api(cep.replace(/ /g, "-"));
-    console.log(ceps);
-    setArr(ceps);
+    if (Array.isArray(ceps)) setArr(ceps);
+    else setArr([ceps]);
   }
   
   useEffect(() => {
@@ -20,28 +20,33 @@ export default function Results() {
   return (
     <div>
       <h1>Resultado da Busca por Endereço ou CEP</h1>
-      <table>
-        <tr>
-          <th>Logradouro/Nome</th>
-          <th>Bairro/Distrito</th>
-          <th>Localidade/UF</th>
-          <th>CEP</th>
-        </tr>
-        {arr.map(({cep, uf, cidade, bairro, logradouro}) => (
-          <tr>
-            <td>{logradouro}</td>
-            <td>{bairro}</td>
-            <td>{cidade}/{uf}</td>
-            <td>{cep}</td>
-          </tr>
-        ))}
-      </table>
       <Link to={"/"}>
         <button
-        onClick={() => setCep('')}
-        >Nova Busca
+          onClick={() => setCep('')}
+        >
+          Nova Busca
         </button>
       </Link>
+      <table>
+        <thead>
+          <tr>
+            <th>Logradouro/Nome</th>
+            <th>Bairro/Distrito</th>
+            <th>Localidade/UF</th>
+            <th>CEP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {arr.map(({cep, uf, cidade, bairro, logradouro}) => (
+            <tr key={cep}>
+              <td>{logradouro}</td>
+              <td>{bairro}</td>
+              <td>{cidade}/{uf}</td>
+              <td>{cep.split("").splice(0, 5).join("")}-{cep.split("").splice(-3).join("")}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
