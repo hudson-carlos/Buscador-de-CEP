@@ -1,7 +1,7 @@
 import {useState, useEffect, useContext} from "react"
 import { Link } from "react-router-dom";
-import api from "./api";
-import { MyContext } from "./provider"
+import api from "../api";
+import { MyContext } from "../provider"
 
 export default function Results() {
   const { cep, setCep } = useContext(MyContext);
