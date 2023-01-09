@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../provider";
 
-export default function Button({messageError}) {
+export default function Button({messageError, route, name}) {
   const { cep, setError } = useContext(MyContext);
   const navigate = useNavigate();  
  
@@ -11,12 +11,12 @@ export default function Button({messageError}) {
       type="button"
       onClick={() =>  {
         if (cep) {
-          navigate("/results");
+          navigate(route);
         }
         else setError(messageError);
       }}
     >
-      Buscar
+      {name}
     </button>
 
   );
