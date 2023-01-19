@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { checkCEP } from "../myfunctions";
 import { MyContext } from "../provider";
 
 export default function Button({messageError, route, name}) {
@@ -10,7 +11,8 @@ export default function Button({messageError, route, name}) {
     <button 
       type="button"
       onClick={() =>  {
-        if (cep) {
+        const cepCheck = checkCEP(cep);
+        if (cepCheck) {
           navigate(route);
         }
         else setError(messageError);

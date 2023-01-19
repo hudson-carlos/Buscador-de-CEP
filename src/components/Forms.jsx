@@ -7,9 +7,7 @@ export default function Forms({messageError}) {
   const { cep, setCep, error, setError } = useContext(MyContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setCep("");
-  }, []);
+  useEffect(() => setCep(""), []);
   
   const enterDown = event => {
     const cepCheck = checkCEP(cep);
