@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../provider";
 import { checkCEP } from "../myfunctions";
+import style from "../styles/forms.module.css";
 
 export default function Forms({messageError}) {
   const { cep, setCep, error, setError } = useContext(MyContext);
@@ -23,21 +24,26 @@ export default function Forms({messageError}) {
   };
 
   return (
-    <form>
-        <label>Digite um CEP ou um Endereço:
-          <input 
-            type="text" 
-            name="search"
-            value={cep} 
-            placeholder="Não utilize nº de casa /apto/lote/prédio ou abreviação"
-            onChange={e => {
-              setError("");
-              setCep(e.target.value);
-            }} 
-            onKeyDown={enterDown} 
-          />
-        </label>
-        <p>{error}</p>
+    <form className={style.form}>
+      <label 
+        className={style.label}
+        > 
+          Digite um CEP ou um Endereço:
+        <input
+          className={error ? style.inputError : style.myInput}
+          autoFocus
+          type="text" 
+          name="search"
+          value={cep} 
+          placeholder="Não utilize nº de casa /apto/lote/prédio ou abreviação"
+          onChange={e => {
+            setError("");
+            setCep(e.target.value);
+          }} 
+          onKeyDown={enterDown} 
+        />
+      </label>
+      <p className={style.messageError}>{error}</p>
     </form>
   );
 }
