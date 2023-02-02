@@ -1,0 +1,21 @@
+.myButton {
+    outline: nome;
+    display: nome;
+    background-color: white;
+    color:  black;
+    font-size: larger;
+    text-decoration: none;
+    border: 1px solid #00416b;
+    border-radius: 12px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.myButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+    background-color: #afdaf7;
+}
+
+.myButton:active {
+    box-shadow: 0 0 0 0 black, inset 3px 3px 3px black;
+}

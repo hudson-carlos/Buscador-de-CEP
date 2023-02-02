@@ -13,7 +13,7 @@ function Home() {
     <ButtonSearch 
       messageError={messageError}
       route={"/results"}
-      name={"Search"} 
+      name={"Buscar"} 
     />    
     </main>
   );
